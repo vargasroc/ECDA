@@ -1,0 +1,7 @@
+com\Roc\controller\TaskController.class
+com\Roc\controller\StageController.class
+com\Roc\model\Task.class
+com\Roc\model\Stage.class
+com\Roc\App.class
+com\Roc\repository\StageRepository.class
+com\Roc\repository\TaskRepository.class

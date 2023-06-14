@@ -1,0 +1,88 @@
+version: '3.9'
+services:
+  mysql-contenedor:
+    image: mysql:5.7
+    container_name: mysql-contenedor
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'dh-dev-mysql'
+      MYSQL_USER: 'usr-dh-mysql'
+      MYSQL_PASSWORD: 'pwd-dh-mysql'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      - '3306'
+    healthcheck:
+      test: [ "CMD", "usr-dh-mysql", "ping", "-ppwd-dh-mysql", "--silent" ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  mongocontenedor:
+    image: mongo
+    container_name: mongocontenedor
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: 'dhdevmongo'
+      MONGO_INITDB_ROOT_USERNAME: 'usrdhmongo'
+      MONGO_INITDB_ROOT_PASSWORD: 'pwddhmongo'
+    ports:
+      - 27017:27017
+    expose:
+      - 27017
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+  mongocontenedor2:
+    image: mongo
+    container_name: mongocontenedor2
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: 'dhdevmongo2'
+      MONGO_INITDB_ROOT_USERNAME: 'usrdhmongo2'
+      MONGO_INITDB_ROOT_PASSWORD: 'pwddhmongo2'
+    ports:
+      - 27018:27018
+    expose:
+      - 27018
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init2.js:ro
+  zipkin-contenedor:
+    image: openzipkin/zipkin-slim
+    container_name: zipkin-contenedor
+    environment:
+      - STORAGE_TYPE=mem
+    ports:
+      - 9411:9411
+    expose:
+      - 9411
+    depends_on:
+      - storage-contenedor
+  storage-contenedor:
+    image: busybox:1.31.0
+    container_name: storage-contenedor
+
+  rabbitmq-contenedor:
+    image: rabbitmq:3-management
+    container_name: rabbitmq-contenedor
+    hostname: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    expose:
+      - 15672
+      - 5672
+  mongocontenedor:
+    image: mongo
+    container_name: mongocontenedor
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: 'dhdevmongo'
+      MONGO_INITDB_ROOT_USERNAME: 'usrdhmongo'
+      MONGO_INITDB_ROOT_PASSWORD: 'pwddhmongo'
+    ports:
+      - 27018:27018
+    expose:
+      - 27018
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro

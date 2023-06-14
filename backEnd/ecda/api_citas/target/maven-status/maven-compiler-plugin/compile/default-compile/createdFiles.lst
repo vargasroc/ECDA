@@ -1,0 +1,7 @@
+com\Roc\config\QuoteConfig.class
+com\Roc\service\QuoteServiceImpl.class
+com\Roc\model\Quote.class
+com\Roc\service\QuoteService.class
+com\Roc\controller\QuoteController.class
+com\Roc\repository\QuoteRepository.class
+com\Roc\App.class
