@@ -19,6 +19,11 @@ public class QuoteServiceImpl implements QuoteService {
     }
 
     @Override
+    public List<Quote> getAllQuotes() {
+        return quoteRepository.findAll();
+    }
+
+    @Override
     public Quote getRandomQuote() {
         List<Quote> quotes = quoteRepository.findAll();
         if (quotes.isEmpty()) {
@@ -33,5 +38,9 @@ public class QuoteServiceImpl implements QuoteService {
     public Quote getQuoteByCategory(String category) {
         return quoteRepository.findByCategory(category);
     }
-}
 
+    @Override
+    public Quote getQuoteByAuthor(String author) {
+        return quoteRepository.findByAuthor(author);
+    }
+}

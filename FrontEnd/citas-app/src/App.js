@@ -1,41 +1,65 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 
-const App = () => {
-  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
+function App() {
   const [quote, setQuote] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
 
-  const openQuoteModal = () => {
-    fetch('API_URL') // Reemplaza 'API_URL' con la URL real de tu API
-    .then(response => response.json())
-    .then(data => setQuote(data))
-    .catch(error => console.error(error));
-    const randomQuote = // Lógica para obtener la cita aleatoria
-    setQuote(randomQuote);
-    setQuoteModalOpen(true);
+  useEffect(() => {
+    fetchNewQuote();
+  }, []);
+
+  const openModal = () => {
+    setModalVisible(true);
   };
 
-  const closeQuoteModal = () => {
-    setQuoteModalOpen(false);
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  const API_URL = 'http://localhost:3333/quotes/random';
+
+  const fetchNewQuote = async () => {
+    try {
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      if (response.ok) {
+        setQuote(data); // Actualiza el estado 'quote' con la nueva cita obtenida
+      } else {
+        console.error('Error al obtener la cita:', data.error);
+      }
+    } catch (error) {
+      console.error('Error de red:', error);
+    }
+  };
+
+  const fetchAnotherQuote = () => {
+    setQuote(null); // Reinicia la cita actual
+    fetchNewQuote(); // Obtiene una nueva cita
   };
 
   return (
     <div className="App">
-      <button onClick={openQuoteModal}>Mostrar Cita</button>
-      {quoteModalOpen && (
+      <h1>Citas Inspiradoras</h1>
+      {quote && (
+        <>
+          <p>{quote.text}</p>
+          <p>- {quote.author}</p>
+          <button onClick={fetchAnotherQuote}>Nueva Cita</button>
+        </>
+      )}
+      {modalVisible && (
         <div className="modal">
           <div className="modal-content">
-            <span className="close" onClick={closeQuoteModal}>
+            <span className="close" onClick={closeModal}>
               &times;
             </span>
-            <h2>{quote.title}</h2>
-            <p>{quote.content}</p>
-            <p>{quote.author}</p>
+            <h2>{quote.author}</h2>
+            <p>{quote.text}</p>
           </div>
         </div>
       )}
     </div>
   );
-};
+}
 
 export default App;

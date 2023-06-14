@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.util.List;
+
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/quotes")
 public class QuoteController {
@@ -26,5 +30,15 @@ public class QuoteController {
     @GetMapping("/category/{category}")
     public Quote getQuoteByCategory(@PathVariable String category) {
         return quoteService.getQuoteByCategory(category);
+    }
+
+    @GetMapping("/author/{author}")
+    public Quote getQuoteByAuthor(@PathVariable String author) {
+        return quoteService.getQuoteByAuthor(author);
+    }
+
+    @GetMapping
+    public List<Quote> getAllQuotes() {
+        return quoteService.getAllQuotes();
     }
 }
