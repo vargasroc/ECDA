@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 
 public interface QuoteRepository extends JpaRepository<Quote, Long> {
-    Quote findByCategory(String category);
+    Quote findBySemana(Integer semana);
     Quote findByAuthor(String author);
 }
 

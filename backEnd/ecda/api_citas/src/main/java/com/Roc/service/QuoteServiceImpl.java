@@ -35,8 +35,8 @@ public class QuoteServiceImpl implements QuoteService {
     }
 
     @Override
-    public Quote getQuoteByCategory(String category) {
-        return quoteRepository.findByCategory(category);
+    public Quote getQuoteBySemana(Integer semana) {
+        return quoteRepository.findBySemana(semana);
     }
 
     @Override

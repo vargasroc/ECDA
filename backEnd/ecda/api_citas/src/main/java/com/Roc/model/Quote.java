@@ -12,14 +12,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "CITAS")
+@Table(name = "citas")
 public class Quote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
     private String author;
-    private String category;
+    private Integer semana;
 
     public Long getId() {
         return id;
@@ -45,12 +45,12 @@ public class Quote {
         this.author = author;
     }
 
-    public String getCategory() {
-        return category;
+    public Integer getSemana() {
+        return semana;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setSemana(Integer semana) {
+        this.semana = semana;
     }
 }
 

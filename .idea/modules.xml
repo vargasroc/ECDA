@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/E.C.D.A.iml" filepath="$PROJECT_DIR$/.idea/E.C.D.A.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backEnd/ecda/api_actividades/api-actividades.iml" filepath="$PROJECT_DIR$/backEnd/ecda/api_actividades/api-actividades.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backEnd/ecda/apigateway/apigateway.iml" filepath="$PROJECT_DIR$/backEnd/ecda/apigateway/apigateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backEnd/ecda/api_citas/citas.iml" filepath="$PROJECT_DIR$/backEnd/ecda/api_citas/citas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backEnd/ecda/config/config.iml" filepath="$PROJECT_DIR$/backEnd/ecda/config/config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backEnd/ecda/eurekaserver/eurekaServer.iml" filepath="$PROJECT_DIR$/backEnd/ecda/eurekaserver/eurekaServer.iml" />
+    </modules>
+  </component>
+</project>

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface QuoteService {
     Quote getRandomQuote();
-    Quote getQuoteByCategory(String category);
+    Quote getQuoteBySemana(Integer semana);
     Quote getQuoteByAuthor(String author);
     List<Quote> getAllQuotes();
 }

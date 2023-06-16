@@ -27,9 +27,9 @@ public class QuoteController {
         return quoteService.getRandomQuote();
     }
 
-    @GetMapping("/category/{category}")
-    public Quote getQuoteByCategory(@PathVariable String category) {
-        return quoteService.getQuoteByCategory(category);
+    @GetMapping("/semana/{semana}")
+    public Quote getQuoteBySemana(@PathVariable Integer semana) {
+        return quoteService.getQuoteBySemana(semana);
     }
 
     @GetMapping("/author/{author}")
