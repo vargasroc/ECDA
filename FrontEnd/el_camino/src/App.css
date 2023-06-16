@@ -1,0 +1,51 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  background-color: #eee;
+}
+
+nav ul li {
+  margin-right: 1rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 0.5rem;
+}
+
+section {
+  padding: 2rem;
+}
+.week-summaries {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.week-summary {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  width: 200px;
+}
+
+.week-summary h3 {
+  margin-top: 0;
+}
+
+.week-summary p {
+  margin-bottom: 0;
+}
